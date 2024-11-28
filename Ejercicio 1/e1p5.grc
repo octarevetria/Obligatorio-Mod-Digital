@@ -96,7 +96,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 116.0]
+    coordinate: [1408, 32.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -120,7 +120,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1048, 32.0]
+    coordinate: [1120, 48.0]
     rotation: 0
     state: enabled
 - name: symbol_rate
@@ -132,7 +132,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 36.0]
+    coordinate: [1240, 48.0]
     rotation: 0
     state: enabled
 - name: analog_noise_source_x_0
@@ -171,7 +171,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 204.0]
+    coordinate: [32, 192.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -181,7 +181,7 @@ blocks:
     alias: ''
     amp: '2'
     comment: ''
-    freq: symbol_rate//2
+    freq: symbol_rate
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -194,7 +194,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 668.0]
+    coordinate: [40, 472.0]
     rotation: 0
     state: enabled
 - name: blocks_add_const_vxx_0
@@ -212,7 +212,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 708.0]
+    coordinate: [336, 532.0]
     rotation: 0
     state: enabled
 - name: blocks_add_xx_0
@@ -247,7 +247,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 228.0]
+    coordinate: [488, 228.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -265,7 +265,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 536.0]
+    coordinate: [400, 428.0]
     rotation: 0
     state: enabled
 - name: blocks_repeat_0
@@ -283,7 +283,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [112, 452.0]
+    coordinate: [56, 372.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle2_0
@@ -304,7 +304,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 444.0]
+    coordinate: [552, 416.0]
     rotation: 0
     state: enabled
 - name: digital_map_bb_0
@@ -320,7 +320,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [232, 228.0]
+    coordinate: [304, 228.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -366,7 +366,7 @@ blocks:
     axislabels: 'True'
     color1: blue
     color10: blue
-    color2: blue
+    color2: red
     color3: blue
     color4: blue
     color5: blue
@@ -379,9 +379,9 @@ blocks:
     entags: 'True'
     grid: 'False'
     gui_hint: '[2,0,1,5]'
-    label1: Signal 1
+    label1: "Env\xEDo"
     label10: Signal 10
-    label2: Signal 2
+    label2: "Recepci\xF3n"
     label3: Signal 3
     label4: Signal 4
     label5: Signal 5
@@ -390,7 +390,7 @@ blocks:
     label8: Signal 8
     label9: Signal 9
     legend: 'True'
-    marker1: '-1'
+    marker1: '0'
     marker10: '-1'
     marker2: '-1'
     marker3: '-1'
@@ -400,7 +400,7 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    nconnections: '1'
+    nconnections: '2'
     samp_per_symbol: '16'
     size: '1024'
     srate: samp_rate
@@ -440,9 +440,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1256, 384.0]
+    coordinate: [1320, 352.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_sink_x_0
   id: qtgui_sink_x
   parameters:
@@ -469,7 +469,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 252.0]
+    coordinate: [936, 172.0]
     rotation: 0
     state: enabled
 - name: qtgui_sink_x_0_0
@@ -488,7 +488,7 @@ blocks:
     plotconst: 'True'
     plotfreq: 'True'
     plottime: 'True'
-    plotwaterfall: 'False'
+    plotwaterfall: 'True'
     rate: '10'
     showports: 'False'
     showrf: 'False'
@@ -498,7 +498,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1320, 564.0]
+    coordinate: [1312, 532.0]
     rotation: 0
     state: enabled
 
@@ -507,16 +507,17 @@ connections:
 - [analog_random_source_x_1, '0', digital_map_bb_0, '0']
 - [analog_sig_source_x_0, '0', blocks_add_const_vxx_0, '0']
 - [blocks_add_const_vxx_0, '0', blocks_multiply_xx_0, '1']
-- [blocks_add_xx_0, '0', qtgui_eye_sink_x_0, '0']
+- [blocks_add_xx_0, '0', qtgui_eye_sink_x_0, '1']
 - [blocks_add_xx_0, '0', qtgui_sink_x_0_0, '0']
 - [blocks_char_to_float_0, '0', blocks_repeat_0, '0']
 - [blocks_multiply_xx_0, '0', blocks_throttle2_0, '0']
 - [blocks_repeat_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_throttle2_0, '0', low_pass_filter_0, '0']
+- [blocks_throttle2_0, '0', qtgui_eye_sink_x_0, '0']
 - [blocks_throttle2_0, '0', qtgui_sink_x_0, '0']
 - [digital_map_bb_0, '0', blocks_char_to_float_0, '0']
 - [low_pass_filter_0, '0', blocks_add_xx_0, '0']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.10.0
