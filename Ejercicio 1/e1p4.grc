@@ -190,7 +190,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [112, 452.0]
+    coordinate: [56, 364.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle2_0
@@ -211,7 +211,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 528.0]
+    coordinate: [360, 504.0]
     rotation: 0
     state: enabled
 - name: blocks_vector_insert_x_0
@@ -230,7 +230,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [176, 620.0]
+    coordinate: [336, 340.0]
     rotation: 0
     state: enabled
 - name: digital_map_bb_0

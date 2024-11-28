@@ -233,22 +233,6 @@ blocks:
     coordinate: [176, 620.0]
     rotation: 0
     state: enabled
-- name: digital_map_bb_0
-  id: digital_map_bb
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    map: (-1,1)
-    maxoutbuf: '0'
-    minoutbuf: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [304, 244.0]
-    rotation: 0
-    state: enabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -430,7 +414,7 @@ blocks:
 
 connections:
 - [analog_noise_source_x_0, '0', blocks_add_xx_0, '1']
-- [analog_random_source_x_1, '0', digital_map_bb_0, '0']
+- [analog_random_source_x_1, '0', blocks_char_to_float_0, '0']
 - [blocks_add_xx_0, '0', qtgui_eye_sink_x_0, '0']
 - [blocks_add_xx_0, '0', qtgui_sink_x_0_0, '0']
 - [blocks_char_to_float_0, '0', blocks_repeat_0, '0']
@@ -438,7 +422,6 @@ connections:
 - [blocks_throttle2_0, '0', low_pass_filter_0, '0']
 - [blocks_throttle2_0, '0', qtgui_sink_x_0, '0']
 - [blocks_vector_insert_x_0, '0', blocks_throttle2_0, '0']
-- [digital_map_bb_0, '0', blocks_char_to_float_0, '0']
 - [low_pass_filter_0, '0', blocks_add_xx_0, '0']
 
 metadata:
