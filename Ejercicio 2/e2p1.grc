@@ -160,7 +160,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [512, 236.0]
+    coordinate: [384, 236.0]
     rotation: 0
     state: enabled
 - name: blocks_delay_0
@@ -169,7 +169,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    delay: '16'
+    delay: '8'
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
@@ -180,7 +180,27 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1296, 468.0]
+    coordinate: [1352, 492.0]
+    rotation: 0
+    state: disabled
+- name: blocks_delay_0_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1584, 580.0]
     rotation: 0
     state: disabled
 - name: blocks_repeat_0
@@ -551,7 +571,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1664, 356.0]
+    coordinate: [1648, 348.0]
     rotation: 0
     state: disabled
 
@@ -561,13 +581,15 @@ connections:
 - [blocks_add_xx_0, '0', blocks_delay_0, '0']
 - [blocks_add_xx_0, '0', fir_filter_xxx_0, '0']
 - [blocks_add_xx_0, '0', qtgui_eye_sink_x_0_0, '0']
+- [blocks_add_xx_0, '0', qtgui_time_sink_x_0, '0']
 - [blocks_char_to_float_0, '0', blocks_repeat_0, '0']
 - [blocks_delay_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_delay_0_0, '0', qtgui_time_sink_x_0, '1']
 - [blocks_repeat_0, '0', blocks_throttle2_0, '0']
 - [blocks_throttle2_0, '0', low_pass_filter_0, '0']
+- [fir_filter_xxx_0, '0', blocks_delay_0_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_eye_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_eye_sink_x_0_0, '1']
-- [fir_filter_xxx_0, '0', qtgui_time_sink_x_0, '1']
 - [low_pass_filter_0, '0', blocks_add_xx_0, '0']
 
 metadata:

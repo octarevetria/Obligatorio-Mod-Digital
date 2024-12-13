@@ -98,7 +98,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 48.0]
+    coordinate: [1024, 24.0]
     rotation: 0
     state: enabled
 - name: analog_noise_source_x_0
@@ -119,7 +119,7 @@ blocks:
     bus_structure: null
     coordinate: [688, 740.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: analog_random_source_x_0
   id: analog_random_source_x
   parameters:
@@ -157,7 +157,7 @@ blocks:
     bus_structure: null
     coordinate: [1064, 456.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_char_to_float_0
   id: blocks_char_to_float
   parameters:
@@ -181,7 +181,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    delay: '8'
+    delay: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
@@ -201,7 +201,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    interp: '16'
+    interp: '8'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -287,7 +287,7 @@ blocks:
     bus_structure: null
     coordinate: [1208, 728.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -429,14 +429,14 @@ blocks:
     showports: 'False'
     showrf: 'False'
     type: float
-    wintype: window.WIN_BLACKMAN_hARRIS
+    wintype: window.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [1632, 164.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_sink_x_0_0
   id: qtgui_sink_x
   parameters:
@@ -464,6 +464,35 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [1648, 324.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '0'
+    fftsize: '2048'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: "\"Se\xF1al antes del canal\""
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: float
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [960, 164.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -666,7 +695,7 @@ connections:
 - [analog_random_source_x_0, '0', digital_map_bb_0, '0']
 - [blocks_add_xx_0, '0', blocks_delay_0, '0']
 - [blocks_add_xx_0, '0', fir_filter_xxx_0, '0']
-- [blocks_add_xx_0, '0', qtgui_sink_x_0, '0']
+- [blocks_add_xx_0, '0', qtgui_sink_x_0_0, '0']
 - [blocks_char_to_float_0, '0', blocks_repeat_0, '0']
 - [blocks_delay_0, '0', qtgui_eye_sink_x_0_0, '0']
 - [blocks_delay_0, '0', qtgui_time_sink_x_0, '0']
@@ -675,10 +704,12 @@ connections:
 - [blocks_vector_insert_x_0, '0', blocks_throttle2_0, '0']
 - [digital_map_bb_0, '0', blocks_char_to_float_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_eye_sink_x_0_0, '1']
+- [fir_filter_xxx_0, '0', qtgui_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_sink_x_0_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_time_sink_x_0, '1']
 - [fir_filter_xxx_0, '0', qtgui_time_sink_x_0_0, '0']
 - [low_pass_filter_0, '0', blocks_add_xx_0, '0']
+- [low_pass_filter_0, '0', qtgui_sink_x_0_1, '0']
 
 metadata:
   file_format: 1
