@@ -152,7 +152,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [648, 676.0]
+    coordinate: [752, 760.0]
     rotation: 0
     state: enabled
 - name: blocks_char_to_float_0
@@ -169,7 +169,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 272.0]
+    coordinate: [384, 260.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -187,7 +187,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 520.0]
+    coordinate: [840, 532.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0
@@ -205,7 +205,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [936, 520.0]
+    coordinate: [1008, 524.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle2_0
@@ -242,7 +242,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1392, 412.0]
+    coordinate: [1480, 364.0]
     rotation: 0
     state: enabled
 - name: digital_constellation_encoder_bc_0
@@ -350,7 +350,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1384, 532.0]
+    coordinate: [1472, 488.0]
     rotation: 0
     state: enabled
 - name: qtgui_eye_sink_x_0
@@ -446,7 +446,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1384, 212.0]
+    coordinate: [1472, 160.0]
     rotation: 0
     state: enabled
 - name: qtgui_number_sink_0
@@ -509,7 +509,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1704, 388.0]
+    coordinate: [1792, 336.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1_0_0
@@ -629,7 +629,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [472, 356.0]
+    coordinate: [544, 384.0]
     rotation: 0
     state: enabled
 - name: root_raised_cosine_filter_0_0
@@ -652,7 +652,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088, 492.0]
+    coordinate: [1176, 64.0]
     rotation: 0
     state: enabled
 
@@ -674,4 +674,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.9.2
+  grc_version: 3.10.10.0

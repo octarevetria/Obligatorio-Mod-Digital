@@ -13,6 +13,7 @@ from gnuradio import qtgui
 from gnuradio import analog
 from gnuradio import blocks
 import numpy
+from gnuradio import digital
 from gnuradio import filter
 from gnuradio.filter import firdes
 from gnuradio import gr
@@ -62,6 +63,7 @@ class digital_baseband(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
+        self.sps = sps = 16
         self.samp_rate = samp_rate = 32000
         self.noise = noise = 0
         self.bandwidth = bandwidth = 2000
@@ -124,7 +126,7 @@ class digital_baseband(gr.top_block, Qt.QWidget):
             'Signal 6', 'Signal 7', 'Signal 8', 'Signal 9', 'Signal 10']
         widths = [1, 1, 1, 1, 1,
             1, 1, 1, 1, 1]
-        colors = ['red', 'red', 'blue', 'blue', 'blue',
+        colors = ['blue', 'red', 'blue', 'blue', 'blue',
             'blue', 'blue', 'blue', 'blue', 'blue']
         alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
             1.0, 1.0, 1.0, 1.0, 1.0]
@@ -156,10 +158,13 @@ class digital_baseband(gr.top_block, Qt.QWidget):
                 (bandwidth/10),
                 window.WIN_HAMMING,
                 6.76))
-        self.fir_filter_xxx_0 = filter.fir_filter_fff(1, [1.0 / 16] * 16)
+        self.fir_filter_xxx_0 = filter.fir_filter_fff(1, [1.0 / 8] * 8)
         self.fir_filter_xxx_0.declare_sample_delay(0)
+        self.digital_map_bb_0 = digital.map_bb([-1,1])
+        self.blocks_vector_insert_x_0 = blocks.vector_insert_f(numpy.zeros(sps//2), sps, 0)
         self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_float*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
-        self.blocks_repeat_0 = blocks.repeat(gr.sizeof_float*1, 16)
+        self.blocks_repeat_0 = blocks.repeat(gr.sizeof_float*1, 8)
+        self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, 0)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 2, 128))), True)
@@ -170,12 +175,15 @@ class digital_baseband(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
-        self.connect((self.analog_random_source_x_0, 0), (self.blocks_char_to_float_0, 0))
+        self.connect((self.analog_random_source_x_0, 0), (self.digital_map_bb_0, 0))
+        self.connect((self.blocks_add_xx_0, 0), (self.blocks_delay_0, 0))
         self.connect((self.blocks_add_xx_0, 0), (self.fir_filter_xxx_0, 0))
-        self.connect((self.blocks_add_xx_0, 0), (self.qtgui_eye_sink_x_0_0, 0))
         self.connect((self.blocks_char_to_float_0, 0), (self.blocks_repeat_0, 0))
-        self.connect((self.blocks_repeat_0, 0), (self.blocks_throttle2_0, 0))
+        self.connect((self.blocks_delay_0, 0), (self.qtgui_eye_sink_x_0_0, 0))
+        self.connect((self.blocks_repeat_0, 0), (self.blocks_vector_insert_x_0, 0))
         self.connect((self.blocks_throttle2_0, 0), (self.low_pass_filter_0, 0))
+        self.connect((self.blocks_vector_insert_x_0, 0), (self.blocks_throttle2_0, 0))
+        self.connect((self.digital_map_bb_0, 0), (self.blocks_char_to_float_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.qtgui_eye_sink_x_0_0, 1))
         self.connect((self.low_pass_filter_0, 0), (self.blocks_add_xx_0, 0))
 
@@ -187,6 +195,12 @@ class digital_baseband(gr.top_block, Qt.QWidget):
         self.wait()
 
         event.accept()
+
+    def get_sps(self):
+        return self.sps
+
+    def set_sps(self, sps):
+        self.sps = sps
 
     def get_samp_rate(self):
         return self.samp_rate

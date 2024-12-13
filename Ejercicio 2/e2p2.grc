@@ -119,7 +119,7 @@ blocks:
     bus_structure: null
     coordinate: [688, 740.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: analog_random_source_x_0
   id: analog_random_source_x
   parameters:
@@ -157,7 +157,7 @@ blocks:
     bus_structure: null
     coordinate: [1064, 456.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_char_to_float_0
   id: blocks_char_to_float
   parameters:
@@ -194,7 +194,7 @@ blocks:
     bus_structure: null
     coordinate: [1280, 260.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_repeat_0
   id: blocks_repeat
   parameters:
@@ -253,22 +253,6 @@ blocks:
     coordinate: [328, 340.0]
     rotation: 0
     state: enabled
-- name: digital_map_bb_0
-  id: digital_map_bb
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    map: '[-1,1]'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [272, 244.0]
-    rotation: 0
-    state: enabled
 - name: fir_filter_xxx_0
   id: fir_filter_xxx
   parameters:
@@ -287,7 +271,7 @@ blocks:
     bus_structure: null
     coordinate: [1208, 728.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -407,7 +391,7 @@ blocks:
     bus_structure: null
     coordinate: [1640, 16.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_sink_x_0
   id: qtgui_sink_x
   parameters:
@@ -494,7 +478,7 @@ blocks:
     bus_structure: null
     coordinate: [960, 164.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -692,7 +676,7 @@ blocks:
 
 connections:
 - [analog_noise_source_x_0, '0', blocks_add_xx_0, '1']
-- [analog_random_source_x_0, '0', digital_map_bb_0, '0']
+- [analog_random_source_x_0, '0', blocks_char_to_float_0, '0']
 - [blocks_add_xx_0, '0', blocks_delay_0, '0']
 - [blocks_add_xx_0, '0', fir_filter_xxx_0, '0']
 - [blocks_add_xx_0, '0', qtgui_sink_x_0_0, '0']
@@ -702,7 +686,6 @@ connections:
 - [blocks_repeat_0, '0', blocks_vector_insert_x_0, '0']
 - [blocks_throttle2_0, '0', low_pass_filter_0, '0']
 - [blocks_vector_insert_x_0, '0', blocks_throttle2_0, '0']
-- [digital_map_bb_0, '0', blocks_char_to_float_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_eye_sink_x_0_0, '1']
 - [fir_filter_xxx_0, '0', qtgui_sink_x_0, '0']
 - [fir_filter_xxx_0, '0', qtgui_sink_x_0_0, '0']
